@@ -2,6 +2,7 @@ import {
   comoEmpezamos,
   contacto,
   estudio,
+  hayEspacios,
   hero,
   menu,
   metodo,
@@ -41,7 +42,7 @@ function Cabecera() {
           <img src="/logo-estudio-clio.png" alt={estudio.nombre} width={499} height={1496} className="h-44 w-auto md:h-64" />
         </a>
         <nav className="hidden items-center gap-8 text-sm text-white/80 md:flex">
-          {menu.map((m) => (
+          {menu.filter((m) => m.href !== "#espacios" || hayEspacios()).map((m) => (
             <a key={m.href} href={m.href} className="transition hover:text-white">
               {m.texto}
             </a>
@@ -296,7 +297,7 @@ export function Pagina({
         <Metodo />
         <Servicio />
         <Partidas />
-        <Espacios />
+        {hayEspacios() && <Espacios />}
         <EnObra />
         <ComoEmpezamos />
         <Estudio />

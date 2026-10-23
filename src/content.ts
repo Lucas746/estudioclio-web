@@ -22,6 +22,9 @@ export const mensajeWhatsApp = "Hola, quiero consultar por un proyecto.";
 export const waLink = (texto: string = mensajeWhatsApp) =>
   `https://wa.me/${estudio.whatsapp}?text=${encodeURIComponent(texto)}`;
 
+// La galería Espacios se muestra recién cuando todos los renders estén cargados.
+export const hayEspacios = () => espacios.every((e) => e.imagen !== null);
+
 export const menu = [
   { href: "#metodo", texto: "Método" },
   { href: "#servicio", texto: "Servicio" },
