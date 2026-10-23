@@ -26,9 +26,17 @@ export function Formulario() {
     t.push(`Cuándo empezar: ${cuando}.`);
     if (mensaje.trim()) t.push(mensaje.trim());
     const url = waLink(t.join("\n"));
-    registrar("envio_formulario", { momento, cuando });
     setEnlace(url);
-    window.open(url, "_blank", "noopener");
+    if (window.matchMedia("(pointer:coarse)").matches) {
+      // Celular: primero sale el evento y después se abre WhatsApp, que deja la página en segundo plano.
+      registrar("envio_formulario", { momento, cuando }, () => {
+        window.location.href = url;
+      });
+    } else {
+      // Computadora: WhatsApp Web en otra pestaña; el sitio sigue abierto y el evento sale igual.
+      registrar("envio_formulario", { momento, cuando });
+      window.open(url, "_blank", "noopener");
+    }
   };
 
   return (

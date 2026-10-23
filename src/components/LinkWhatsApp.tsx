@@ -23,7 +23,18 @@ export function LinkWhatsApp({
       rel="noopener"
       aria-label={ariaLabel}
       className={className}
-      onClick={() => registrar("clic_whatsapp", { ubicacion })}
+      onClick={(e) => {
+        if (window.matchMedia("(pointer:coarse)").matches) {
+          // Celular: se espera a que salga el evento antes de abrir WhatsApp.
+          e.preventDefault();
+          const url = e.currentTarget.href;
+          registrar("clic_whatsapp", { ubicacion }, () => {
+            window.location.href = url;
+          });
+        } else {
+          registrar("clic_whatsapp", { ubicacion });
+        }
+      }}
     >
       {children}
     </a>
