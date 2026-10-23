@@ -13,6 +13,8 @@ export const estudio = {
   instagram: "estudioclio",
   url: "https://www.estudioclio.com",
   pie: "Estudio Clio · Arq. Lucas M. Hick · Hudson, Berazategui",
+  // Google Analytics 4 (cuenta contacto@estudioclio.com)
+  analytics: "G-XD6JENKQR7",
 };
 
 export const mensajeWhatsApp = "Hola, quiero consultar por un proyecto.";

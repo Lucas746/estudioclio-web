@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { estudio } from "@/content";
 import "./globals.css";
 
@@ -73,6 +74,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(datosEstructurados) }}
         />
         {children}
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${estudio.analytics}`} strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','${estudio.analytics}');`}
+        </Script>
       </body>
     </html>
   );
