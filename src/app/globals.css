@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #111;
+  --color-graphite: #2a2a2a;
+  --color-stone: #6b6b6b;
+  --color-mist: #d9d9d6;
+  --color-paper: #f5f5f3;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fff;
+  color: var(--color-ink);
+  font-weight: 450;
+  -webkit-font-smoothing: antialiased;
+}
+
+.eyebrow {
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-stone);
+  font-size: 0.75rem;
+}
+
+/* Barra de avance de la galería Espacios */
+@keyframes llenar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.sin-barra {
+  scrollbar-width: none;
+}
+.sin-barra::-webkit-scrollbar {
+  display: none;
+}
